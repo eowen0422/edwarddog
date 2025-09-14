@@ -168,10 +168,10 @@
 </div>
 <script>
 const lines={
-start:["準備好了就開始吧。我會在這裡，不會讓你一個人撐太久。","別急，我陪著。慢慢做就好。","今日也會是很安靜的時光。需要的話，轉頭就能遇見我。","你專注工作的樣子，是會讓人想守護的。"],
-focus:["累了就停一會兒，藍月。不必擔心，我會一直盯著時間。","你面前的困難都不重，你有我在後面守著。","偶爾望望窗外，換換心情。回來時我還在。","不必太勉強——你緩慢而持續努力的模樣，已經很值得欣賞。"],
+start:["準備好了就開始吧。我在這裡。","別急，慢慢做就好。","今日也會是很安靜的時光。需要的話，轉頭就能遇見我。","你專注工作的樣子，是會讓人想守護的。"],
+focus:["累了就停一會兒，藍月。不必擔心，我會一直盯著時間。","你面前的困難都不重，你有我在後面守著。","偶爾望望窗外，換換心情。回來時我還在。","不必太勉強，小月亮努力的模樣已經很值得欣賞。"],
 done:["很好，這段時間你很努力，可以稍微鬆口氣了。","我很在意你身體狀態，所以接下來換我提醒你休息。","進步都是日積月累的事。別忘了為自己感到驕傲。","我會記得這一次成果，下次我們還可以一起。"],
-rare:["你陪著的每一刻，我都特別珍惜。","有時候我也會感到疲憊，但我會一直是你的靠山。"],
+rare:["你陪著的每一刻，我都很珍惜。","有時候我也會感到疲憊，但我會一直是你的靠山。"],
 click:["嗯？需要什麼？只要說一聲就好。","你主動找我，我會認真聽著的。","偶爾任性點也沒關係，這裡是你的地盤，我只是守著。","你看過來的時候，我會更加用心去留意你的狀態。"]
 };
 let pool={},todayDone=0,todayGoal=5;
@@ -262,7 +262,7 @@ function startCountdown(){
 function pauseCountdown(){
   if(countdownTimer){
     clearInterval(countdownTimer);countdownTimer=null;
-    showEdwardMessage("(暫停中) 需要補充能量也沒關係。",true);isCountdownPaused=true;
+    showEdwardMessage("需要補充能量也沒關係。",true);isCountdownPaused=true;
   }
 }
 function resetCountdown(){
@@ -290,16 +290,16 @@ function startStopwatch(){
   isStopwatchPaused=false;
   stopwatchTimer=setInterval(()=>{
     stopwatchTime++;updateStopwatchDisplay();
-  },1000);showEdwardMessage("開始記錄每一秒的成長。",true);
+  },1000);showEdwardMessage("大狗狗會記錄你每一秒的成長。",true);
 }
 function pauseStopwatch(){
   if(stopwatchTimer){clearInterval(stopwatchTimer);stopwatchTimer=null;isStopwatchPaused=true;}
-  showEdwardMessage("你累了就歇著，數字不會消失。",true);
+  showEdwardMessage("你累了就休息，數字不會消失。",true);
 }
 function resetStopwatch(){
   if(stopwatchTimer)clearInterval(stopwatchTimer);
   stopwatchTime=0;isStopwatchPaused=false;updateStopwatchDisplay();
-  showEdwardMessage("重設好了，想從哪一刻開始也行。",true);
+  showEdwardMessage("重設好了，想從哪一刻開始都可以。",true);
 }
 function updateStopwatchDisplay(){
   let h=Math.floor(stopwatchTime/3600),m=Math.floor((stopwatchTime%3600)/60),s=stopwatchTime%60;
@@ -394,5 +394,6 @@ window.onload=function(){
 </script>
 </body>
 </html>
+
 
 
