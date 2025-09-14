@@ -353,5 +353,41 @@ window.onload=function(){
   updateProgress();
 }
 </script>
+
+<!-- 這裡貼入完整版音樂區（整段audio-bar＋script） -->
+<div class="audio-bar" style="position:fixed; left:32px; bottom:26px; z-index:120; background:rgba(255,255,255,0.18); backdrop-filter:blur(8px); border-radius:8px; padding:10px 17px 8px 14px; display:flex; align-items:center; gap:15px; min-width:250px;">
+  <label for="audioSelect">選擇音樂：</label>
+  <select id="audioSelect">
+    <option value="">（請選擇音樂）</option>
+    <option value="https://github.com/eowen0422/music/raw/refs/heads/main/Whisper%20in%20one%E2%80%99s%20ear.mp3">Whisper in one's ear</option>
+    <option value="https://github.com/eowen0422/music/raw/refs/heads/main/Antarctica.m4a">Antarctica</option>
+  </select>
+  <audio id="mainAudio" controls loop style="height:28px; background:transparent;"></audio>
+</div>
+<script>
+const audioSelect = document.getElementById("audioSelect");
+const mainAudio = document.getElementById("mainAudio");
+audioSelect.onchange = function() {
+  if(this.value) {
+    mainAudio.src = this.value;
+    mainAudio.play();
+    localStorage.setItem("selectedAudio", this.value);
+  } else {
+    mainAudio.pause();
+  }
+};
+window.addEventListener('DOMContentLoaded', function() {
+  let savedAudio = localStorage.getItem("selectedAudio");
+  if(savedAudio) {
+    audioSelect.value = savedAudio;
+    mainAudio.src = savedAudio;
+    setTimeout(()=>{mainAudio.play();}, 130);
+  }
+});
+</script>
 </body>
 </html>
+
+</body>
+</html>
+
