@@ -437,8 +437,8 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 <!-- 貼在<body>裡任何地方都可 -->
 <script>
-function showBoneSplash(){
-  // 產生 SVG 狗骨頭在隨機畫面位置
+document.body.addEventListener('click', function(e){
+  // SVG狗骨頭
   const boneSVG = `
     <svg width="56" height="24" viewBox="0 0 56 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="8" cy="12" rx="7" ry="7" fill="#fff3cc" stroke="#c8a661" stroke-width="2"/>
@@ -449,28 +449,27 @@ function showBoneSplash(){
   let node=document.createElement('div');
   node.innerHTML=boneSVG;
   node.style.position='fixed';
-  // 出現在你鼠標附近＋點擊隨機偏移一點點
-  let x = event.clientX, y = event.clientY;
-  node.style.left = (x-28+(Math.random()-0.5)*44) + "px";
-  node.style.top = (y-12+(Math.random()-0.5)*20) + "px";
+  // 用e.clientX, e.clientY確保跨瀏覽器/設備正確
+  let x = e.clientX||window.innerWidth/2, y = e.clientY||window.innerHeight/2;
+  node.style.left = (x-28+(Math.random()-0.5)*34) + "px";
+  node.style.top = (y-12+(Math.random()-0.5)*16) + "px";
   node.style.zIndex = 2333;
   node.style.pointerEvents = "none";
-  node.style.opacity = 0.88;
+  node.style.opacity = 0.9;
   node.style.transition = "transform 0.7s cubic-bezier(.21,.77,.62,1.2), opacity 0.77s";
-  node.style.transform = "scale(1.10) rotate("+ (Math.random()*38-18) +"deg)";
+  node.style.transform = "scale(1.08) rotate("+ (Math.random()*34-17) +"deg)";
   document.body.appendChild(node);
   setTimeout(()=>{
-    node.style.transform += " translateY(-45px) scale(0.64)";
+    node.style.transform += " translateY(-45px) scale(0.63)";
     node.style.opacity=0;
-    setTimeout(()=>document.body.removeChild(node),670);
-  },35);
-}
-// 綁定全頁點擊事件（你也可以綁定在主卡或特定按鈕）
-document.body.addEventListener('click',showBoneSplash,false);
+    setTimeout(()=>document.body.removeChild(node),630);
+  },36);
+});
 </script>
 
 </body>
 </html>
+
 
 
 
